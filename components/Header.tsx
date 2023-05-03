@@ -71,7 +71,7 @@ function Header() {
 
   return (
     <div className="flex flex-col">
-      <h1>Header</h1>
+      <h1>glyph-text</h1>
       <AlertDialog>
         <Menubar>
           <MenubarMenu>
