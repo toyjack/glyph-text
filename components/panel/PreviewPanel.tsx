@@ -21,7 +21,7 @@ function PreviewPanel() {
       {/* <div>{selectedIndex}</div> */}
       <div className="border-2 border-black m-1 p-2">
         <h3>Glyph Images</h3>
-        <div className="flex">
+        <div className="flex flex-wrap">
           <span
             className={
               0 === selectedIndex ? "border-r-2 border-black" : "" + " text-xl"
@@ -50,7 +50,7 @@ function PreviewPanel() {
 
       <div>
         <h3>Unicode Charaters</h3>
-        <div className="border-2 border-black m-1 p-2 text-lg">
+        <div className="flex flex-wrap border-2 border-black m-1 p-2 text-lg">
           {codedata &&
             codedata.map((character, index) => (
               <span key={index}>{character.character}</span>
