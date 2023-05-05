@@ -25,9 +25,6 @@ export default function Home() {
           <StepPanel />
           <Separator className="my-4" />
           <DisplayPanel />
-          {/* <PreviewPanel /> */}
-          {/* <Separator className="my-4" /> */}
-          {/* <CodePanel /> */}
         </div>
       </main>
     </Providers>

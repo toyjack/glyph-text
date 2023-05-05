@@ -11,7 +11,7 @@ function StepPanel() {
   const stepState = useAppSelector((state) => state.general.stepState);
   
   return (
-    <div className="w-full md:py-8">
+    <div className="w-full md:py-4 md:my-4">
       <ul className="steps">
         <li className={clsx("step", stepState.step1 && "step-neutral")}>
           <button

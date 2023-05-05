@@ -1,15 +1,12 @@
 import {
-  getGlyphWikiDataByGlyphName,
   getGlyphWikiPngUrl,
   getGlyphWikiSvgUrl,
   getUnicodeFromCharacter,
 } from "@/lib/utils";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { CharacterGlyphData, GlyphData, GlyphWikiGlyphResponse, TextData } from "@/types";
-
-
 
 export interface generalState {
   search: string;
@@ -25,7 +22,7 @@ export interface generalState {
     step2: boolean,
     step3: boolean,
     step4: boolean,
-  }
+  },
 }
 
 const initialState: generalState = {
@@ -42,8 +39,9 @@ const initialState: generalState = {
     step2: false,
     step3: false,
     step4: false,
-  }
+  },
 };
+
 
 export const generalSlice = createSlice({
   name: "general",
@@ -116,8 +114,11 @@ export const generalSlice = createSlice({
     // TODO: need to refactor this
     setStepPreview: (state, action: PayloadAction<boolean>) => {
       state.stepState.step3 = action.payload;
-    }
+    },
+    updateGlyph(state, action: PayloadAction<CharacterGlyphData>) {}
   },
+  
+  
 });
 
 export const {

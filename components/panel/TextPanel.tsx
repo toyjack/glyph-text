@@ -8,16 +8,19 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 function TextPanel() {
   const dispatch = useAppDispatch();
   const textData = useAppSelector((state) => state.general.textData);
+  
+
   return (
     <ScrollArea className="h-96">
-      <article className="prose">
-        {textData && textData.map((character) => {
-          if (character.character === "\r" || character.character === "\n") {
-            return <br key={character.index}/>;
-          }else{
-            return <span key={character.index}>{character.character}</span>
-          }
-        })}
+      <article className="prose-xl">
+        {textData &&
+          textData.map((character) => {
+            if (character.character === "\r" || character.character === "\n") {
+              return <br key={character.index} />;
+            } else {
+              return <span key={character.index}>{character.character}</span>;
+            }
+          })}
       </article>
     </ScrollArea>
   );

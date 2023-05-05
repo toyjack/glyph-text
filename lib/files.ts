@@ -61,3 +61,13 @@ export const exportData = () => {
   downloadAnchorNode.click();
   downloadAnchorNode.remove();
 };
+
+export const getGlyphWikiSvgFromGlyphData = (character: string)=>{
+  const glyphData = store.getState().general.glyphData;
+  const glyph = glyphData.find((glyph) => glyph.character === character);
+  console.log(glyph)
+  if (glyph) {
+    return glyph.glyphwiki_png;
+  }
+  return null;
+}

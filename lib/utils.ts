@@ -17,21 +17,14 @@ export function getUnicodeFromCharacter(character: string) {
   return `U+${character.codePointAt(0)?.toString(16).toUpperCase() ?? ""}`;
 }
 
+export function getGlyphWikiNameByCharacter(character: string) {
+  return `u${character.codePointAt(0)?.toString(16).toLowerCase() ?? ""}`;
+}
+
 export function getGlyphWikiSvgUrl(name: string) {
   return `https://glyphwiki.org/glyph/${name}.svg`;
 }
 
 export function getGlyphWikiPngUrl(name: string) {
   return `https://glyphwiki.org/glyph/${name}.png`;
-}
-
-export function getGlyphWikiDataByGlyphName(name: string) {
-  axios
-    .get(`https://glyphwiki.org/api/glyph?name=${name}`)
-    .then((response) => {
-      return response.data.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 }

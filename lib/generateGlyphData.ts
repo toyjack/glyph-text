@@ -29,7 +29,8 @@ export function generateGlyphData(textData: TextData) {
         glyphwiki_name: "u" + code.toLowerCase(),
         glyphwiki_svg:
           "https://glyphwiki.org/glyph/" + "u" + code.toLowerCase() + ".svg",
-        glyphwiki_png: "",
+        glyphwiki_png:
+          "https://glyphwiki.org/glyph/" + "u" + code.toLowerCase() + ".png",
         glyphwiki_data: "",
         kage_data: "",
       } as CharacterGlyphData;
