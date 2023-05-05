@@ -8,8 +8,6 @@ export async function GET(request: Request) {
   if (unicode) {
     try{
       const ivdFile = await readFile("./app/api/ivd/IVD_Sequences.txt", "utf-8");
-      // const regexStr = `^${unicode}\\s([^\s]+)`;
-      // const regexStr = `\\n${unicode}\\s([^;]+;)\\s([^;]+;)\\s(.+)$`;
       const regexStr = `\\n${unicode}\\s([^;]+;)\\s([^;]+;)\\s(.+)`;
       const regex = new RegExp(regexStr, "g");
       

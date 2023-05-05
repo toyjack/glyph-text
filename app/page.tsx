@@ -3,9 +3,16 @@
 import Header from "@/components/Header";
 import Providers from "@/components/Provider";
 import CodePanel from "@/components/panel/CodePanel";
+import DisplayPanel from "@/components/panel/DisplayPanel";
 import PreviewPanel from "@/components/panel/PreviewPanel";
 import SearchPanel from "@/components/panel/SearchPanel";
+import StepPanel from "@/components/panel/StepPanel";
 import { Separator } from "@/components/ui/separator";
+
+// TODO: read plain text file
+// TODO: read glyph file
+// TODO: glyph file modification
+// TODO: glyph file generation
 
 export default function Home() {
   return (
@@ -13,11 +20,14 @@ export default function Home() {
       <main className="w-full">
         <div className="flex flex-col py-4">
           <Header />
-          <SearchPanel />
+          {/* <SearchPanel />
+          <Separator className="my-4" /> */}
+          <StepPanel />
           <Separator className="my-4" />
-          <PreviewPanel />
-          <Separator className="my-4" />
-          <CodePanel />
+          <DisplayPanel />
+          {/* <PreviewPanel /> */}
+          {/* <Separator className="my-4" /> */}
+          {/* <CodePanel /> */}
         </div>
       </main>
     </Providers>

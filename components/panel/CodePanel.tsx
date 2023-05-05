@@ -8,7 +8,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 function CodePanel() {
   const dispatch = useAppDispatch();
-  const codedata = useAppSelector((state) => state.general.codeData);
+  const codedata = useAppSelector((state) => state.general.glyphData);
 
   return (
     <div className="flex flex-col w-full">

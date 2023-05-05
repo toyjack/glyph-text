@@ -7,39 +7,42 @@ import {
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface CharacterData {
-  character: string;
-  unicode: string;
-  glyphwiki_name: string;
-  glyphwiki_svg: string;
-  glyphwiki_png: string;
-  glyphwiki_data: string;
-  kage_data: string;
-}
+import { CharacterGlyphData, GlyphData, GlyphWikiGlyphResponse, TextData } from "@/types";
 
-export interface GlyphWikiGlyphResponse {
-  name: string | null;
-  related: string;
-  version: number | null;
-  data: string | null;
-}
 
-export interface IdsSearchState {
+
+export interface generalState {
   search: string;
   selctedCharacter: string;
   selctedGlyph: string;
   glyphWikiData: string;
-  codeData: CharacterData[];
-  selectedIndex: number;
+  glyphData: GlyphData;
+  selectedGlyphDataIndex: number;
+  selectedTextDataIndex: number;
+  textData: TextData;
+  stepState:{
+    step1: boolean,
+    step2: boolean,
+    step3: boolean,
+    step4: boolean,
+  }
 }
 
-const initialState: IdsSearchState = {
+const initialState: generalState = {
   search: "",
   selctedCharacter: "",
   selctedGlyph: "",
   glyphWikiData: "",
-  codeData: [],
-  selectedIndex: 0,
+  glyphData: [],
+  selectedGlyphDataIndex: 0,
+  selectedTextDataIndex: 0,
+  textData: [],
+  stepState:{
+    step1: false,
+    step2: false,
+    step3: false,
+    step4: false,
+  }
 };
 
 export const generalSlice = createSlice({
@@ -67,11 +70,14 @@ export const generalSlice = createSlice({
       }
     },
 
-    setIndex: (state, action: PayloadAction<number>) => {
-      state.selectedIndex = action.payload;
+    setGlyphDataIndex: (state, action: PayloadAction<number>) => {
+      state.selectedGlyphDataIndex = action.payload;
+    },
+    setTextDataIndex: (state, action: PayloadAction<number>) => {
+      state.selectedTextDataIndex = action.payload;
     },
     addCharacter: (state) => {
-      const payload: CharacterData = {
+      const payload: CharacterGlyphData = {
         character: state.selctedCharacter,
         unicode: getUnicodeFromCharacter(state.selctedCharacter),
         glyphwiki_name: state.selctedGlyph,
@@ -80,22 +86,36 @@ export const generalSlice = createSlice({
         glyphwiki_data: state.glyphWikiData,
         kage_data: "",
       };
-      state.codeData.splice(state.selectedIndex, 0, payload);
-      state.selectedIndex++;
+      state.glyphData.splice(state.selectedGlyphDataIndex, 0, payload);
+      state.selectedGlyphDataIndex++;
     },
     removeCharacter: (state) => {
-      state.codeData.splice(state.selectedIndex, 1);
-      state.selectedIndex--;
+      state.glyphData.splice(state.selectedGlyphDataIndex, 1);
+      state.selectedGlyphDataIndex--;
     },
 
-    importCodeData: (state, action: PayloadAction<CharacterData[]>) => {
-      state.codeData = action.payload;
-      state.selectedIndex = action.payload.length ;
+    setGlyphData: (state, action: PayloadAction<GlyphData>) => {
+      state.glyphData = action.payload;
+      state.selectedGlyphDataIndex = action.payload.length ;
+      state.stepState.step2 = true;
     },
 
-    clearCodeData: (state) => {
-      state.codeData = [];
-      state.selectedIndex = 0;
+    clearGlyphData: (state) => {
+      state.glyphData = [];
+      state.selectedGlyphDataIndex = 0;
+    },
+    setTextData: (state, action: PayloadAction<string>) => {
+      state.textData = Array.from(action.payload).map((character, index) => {
+        return {
+          index: index,
+          character: character,
+          };
+      });
+      state.stepState.step1 = true;
+    },
+    // TODO: need to refactor this
+    setStepPreview: (state, action: PayloadAction<boolean>) => {
+      state.stepState.step3 = action.payload;
     }
   },
 });
@@ -105,11 +125,14 @@ export const {
   setCharacter,
   setGlyphName,
   setGlyphWikiData,
-  setIndex,
+  setGlyphDataIndex,
+  setTextDataIndex,
   addCharacter,
   removeCharacter,
-  importCodeData,
-  clearCodeData,
+  setGlyphData,
+  clearGlyphData,
+  setTextData,
+  setStepPreview,
 } = generalSlice.actions;
 
 export default generalSlice.reducer;

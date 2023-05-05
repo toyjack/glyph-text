@@ -5,7 +5,7 @@ module.exports = {
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -71,5 +71,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),require('daisyui')],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography"), require('daisyui')],
 }
