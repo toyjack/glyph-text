@@ -18,7 +18,8 @@ function GlyphDataPanel() {
             <th></th>
             <th>Unicode</th>
             <th>Character</th>
-            <th>Glyph</th>
+            <th>GlyphWki Name</th>
+            <th>Glyph Image</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@ function GlyphDataPanel() {
                 <th>{index + 1}</th>
                 <td>{character.unicode}</td>
                 <td>{character.character}</td>
+                <td>{character.glyphwiki_name}</td>
                 <td>
                   <Image
                     src={character.glyphwiki_svg}
