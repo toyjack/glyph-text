@@ -5,6 +5,8 @@ const nextConfig = {
   },
   images: {
     domains: ['glyphwiki.org'],
+    // or will overuser the vercel API
+    unoptimized: true,
   },
 }
 

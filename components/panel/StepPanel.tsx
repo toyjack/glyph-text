@@ -1,4 +1,4 @@
-import { exportData, importGlyphData, importTextData } from "@/lib/files";
+import {  importGlyphData, importTextData } from "@/lib/files";
 import { callSetGlyphData } from "@/lib/generateGlyphData";
 import { AppDispatch, RootState } from "@/store";
 import clsx from "clsx";
@@ -18,36 +18,36 @@ function StepPanel() {
             className="hover:underline hover:cursor-pointer"
             onClick={importTextData}
           >
-            Open text file
+            テキストデータを開く
           </button>
         </li>
         <li className={clsx("step", stepState.step2 && "step-neutral")}>
           <div className="flex">
+            字形データ&nbsp;
             <span
               className="hover:underline hover:cursor-pointer"
               onClick={callSetGlyphData}
             >
-              Generate
+              生成
             </span>{" "}
             &nbsp;/&nbsp;
             <span
               className="hover:underline hover:cursor-pointer"
               onClick={importGlyphData}
             >
-              Open
+              導入
             </span>
-            &nbsp;glyph file
           </div>
         </li>
         <li className={clsx("step", stepState.step3 && "step-neutral")}>
-          Preview
+          プレビュー
         </li>
         <li className={clsx("step", stepState.step4 && "step-neutral")}>
           <span
             className="hover:underline hover:cursor-pointer"
             onClick={importGlyphData}
           >
-            Save
+            保存
           </span>
         </li>
       </ul>

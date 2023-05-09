@@ -2,10 +2,7 @@
 
 import Header from "@/components/Header";
 import Providers from "@/components/Provider";
-import CodePanel from "@/components/panel/CodePanel";
 import DisplayPanel from "@/components/panel/DisplayPanel";
-import PreviewPanel from "@/components/panel/PreviewPanel";
-import SearchPanel from "@/components/panel/SearchPanel";
 import StepPanel from "@/components/panel/StepPanel";
 import { Separator } from "@/components/ui/separator";
 

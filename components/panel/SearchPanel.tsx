@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import IdsSearchInput from "../IdsSearchInput";
 import IdsResults from "../IdsResults";
 import IdsGlyphs from "../IdsGlyphs";
-import { Label } from "../ui/label";
 
 
 function SearchPanel() {

@@ -41,11 +41,11 @@ function Header() {
       <AlertDialog>
         <Menubar>
           <MenubarMenu>
-            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarTrigger>ファイル</MenubarTrigger>
             <MenubarContent>
               <MenubarItem onClick={importTextData}>Open text data</MenubarItem>
               <MenubarItem onClick={importGlyphData}>
-                Open glyph data
+                テキストデータを導入
               </MenubarItem>
               <MenubarItem onClick={exportData}>Save glyph data</MenubarItem>
               <MenubarSeparator />
@@ -56,20 +56,20 @@ function Header() {
           </MenubarMenu>
 
           <MenubarMenu>
-            <MenubarTrigger>Glyphs</MenubarTrigger>
+            <MenubarTrigger>字形</MenubarTrigger>
             <MenubarContent>
               <MenubarItem onClick={callSetGlyphData}>
-                Generate glyph data
+                字形データを生成
               </MenubarItem>
               {/* <MenubarSeparator /> */}
               <AlertDialogTrigger asChild>
-                <MenubarItem>Clear glyph data</MenubarItem>
+                <MenubarItem>字形データをクリア</MenubarItem>
               </AlertDialogTrigger>
             </MenubarContent>
           </MenubarMenu>
 
           <MenubarMenu>
-            <MenubarTrigger>About</MenubarTrigger>
+            <MenubarTrigger>使い方</MenubarTrigger>
             <MenubarContent>
               <MenubarItem>Help</MenubarItem>
               <MenubarSeparator />
