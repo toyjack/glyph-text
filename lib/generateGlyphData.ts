@@ -1,7 +1,6 @@
 import { CharacterGlyphData, TextData } from "@/types";
 import { store } from "@/store";
 import { setGlyphData } from "@/store/generalSlicer";
-import { Dispatch } from "redux";
 
 export function callSetGlyphData() {
   const dispatch = store.dispatch;
