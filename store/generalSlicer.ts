@@ -6,7 +6,12 @@ import {
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { CharacterGlyphData, GlyphData, GlyphWikiGlyphResponse, TextData } from "@/types";
+import {
+  CharacterGlyphData,
+  GlyphData,
+  GlyphWikiGlyphResponse,
+  TextData,
+} from "@/types";
 
 export interface generalState {
   search: string;
@@ -17,12 +22,12 @@ export interface generalState {
   selectedGlyphDataIndex: number;
   selectedTextDataIndex: number;
   textData: TextData;
-  stepState:{
-    step1: boolean,
-    step2: boolean,
-    step3: boolean,
-    step4: boolean,
-  },
+  stepState: {
+    step1: boolean;
+    step2: boolean;
+    step3: boolean;
+    step4: boolean;
+  };
 }
 
 const initialState: generalState = {
@@ -34,7 +39,7 @@ const initialState: generalState = {
   selectedGlyphDataIndex: 0,
   selectedTextDataIndex: 0,
   textData: [],
-  stepState:{
+  stepState: {
     step1: false,
     step2: false,
     step3: false,
@@ -42,6 +47,14 @@ const initialState: generalState = {
   },
 };
 
+export const asyncFetchDecomposedGlyphData = createAsyncThunk(
+  "general/fetchDecomposedGlyphData",
+  async (glyphName: string) => {
+    const response = await fetch("/api/kage2svg?glyph=" + glyphName);
+    const data = await response.json();
+    return data;
+  }
+);
 
 export const generalSlice = createSlice({
   name: "general",
@@ -94,7 +107,7 @@ export const generalSlice = createSlice({
 
     setGlyphData: (state, action: PayloadAction<GlyphData>) => {
       state.glyphData = action.payload;
-      state.selectedGlyphDataIndex = action.payload.length ;
+      state.selectedGlyphDataIndex = action.payload.length;
       state.stepState.step2 = true;
     },
 
@@ -107,7 +120,7 @@ export const generalSlice = createSlice({
         return {
           index: index,
           character: character,
-          };
+        };
       });
       state.stepState.step1 = true;
     },
@@ -115,10 +128,17 @@ export const generalSlice = createSlice({
     setStepPreview: (state, action: PayloadAction<boolean>) => {
       state.stepState.step3 = action.payload;
     },
-    updateGlyph(state, action: PayloadAction<CharacterGlyphData>) {}
+    updateGlyph(state, action: PayloadAction<CharacterGlyphData>) {},
   },
-  
-  
+  extraReducers: (builder) => {
+    builder
+      .addCase(asyncFetchDecomposedGlyphData.fulfilled, (state, action) => {
+        // state.glyphData[state.glyphData] = action.payload;
+      })
+      .addCase(asyncFetchDecomposedGlyphData.rejected, (state, action) => {
+        // state.glyphData[state.selectedGlyphDataIndex = action.payload;
+      });
+  },
 });
 
 export const {
