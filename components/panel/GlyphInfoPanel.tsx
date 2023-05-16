@@ -1,15 +1,48 @@
-import Image from 'next/image';
-import React from 'react'
-import { ScrollArea } from '../ui/scroll-area';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
-import Link from 'next/link';
-import { AppDispatch, RootState } from '@/store';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import Image from "next/image";
+import React from "react";
+import { ScrollArea } from "../ui/scroll-area";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import Link from "next/link";
+import { AppDispatch, RootState } from "@/store";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import {
+  getGlyphWikiNameByCharacter,
+  getUnicodeFromCharacter,
+} from "@/lib/utils";
+import { getGlyphWikiSvgFromGlyphData } from "@/lib/files";
+import { useGetRelatedGlyphsByCodeQuery } from "@/store/glyphfindAPI";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 function GlyphInfoPanel() {
+  const dispatch = useAppDispatch();
+  const selectedCharacter = useAppSelector(
+    (state) => state.general.selctedCharacter
+  );
+  const selectedTextDataIndex = useAppSelector(
+    (state) => state.general.selectedTextDataIndex
+  );
+
+  const {
+    data: relatedGlyphsData,
+    error,
+    isLoading: relatedLoading,
+  } = useGetRelatedGlyphsByCodeQuery(
+    getGlyphWikiNameByCharacter(selectedCharacter)
+  );
+  const hanldeNameInRelated = (name: string) => {
+    if (name.includes("=")) {
+      return name.split("=")[0].trim();
+    }
+    return name;
+  };
+  const handleClickRelated = (glyphName: string, character: string) => {};
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
@@ -84,4 +117,4 @@ function GlyphInfoPanel() {
   );
 }
 
-export default GlyphInfoPanel
+export default GlyphInfoPanel;
