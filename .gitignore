@@ -1,12 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# yarn
-yarn-error.log
-yarn.lock
-.yarn/
-.pnp.cjs
-.pnp.loader.mjs
-
 # dependencies
 /node_modules
 /.pnp
