@@ -34,7 +34,6 @@ export function generateGlyphData(textData: TextData) {
         kage_data: "",
       } as CharacterGlyphData;
     });
-  console.log(results);
   return results;
 }
 

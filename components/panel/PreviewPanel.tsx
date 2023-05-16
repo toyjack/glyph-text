@@ -5,7 +5,6 @@ import Image from "next/image";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { ScrollArea } from "../ui/scroll-area";
 import clsx from "clsx";
-import { Separator } from "../ui/separator";
 import {
   getGlyphWikiNameByCharacter,
   getUnicodeFromCharacter,
