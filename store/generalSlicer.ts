@@ -3,7 +3,7 @@ import {
   getGlyphWikiSvgUrl,
   getUnicodeFromCharacter,
 } from "@/lib/utils";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import {
@@ -46,15 +46,6 @@ const initialState: generalState = {
     step4: false,
   },
 };
-
-export const asyncFetchDecomposedGlyphData = createAsyncThunk(
-  "general/fetchDecomposedGlyphData",
-  async (glyphName: string) => {
-    const response = await fetch("/api/kage2svg?glyph=" + glyphName);
-    const data = await response.json();
-    return data;
-  }
-);
 
 export const generalSlice = createSlice({
   name: "general",
@@ -129,15 +120,6 @@ export const generalSlice = createSlice({
       state.stepState.step3 = action.payload;
     },
     updateGlyph(state, action: PayloadAction<CharacterGlyphData>) {},
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(asyncFetchDecomposedGlyphData.fulfilled, (state, action) => {
-        // state.glyphData[state.glyphData] = action.payload;
-      })
-      .addCase(asyncFetchDecomposedGlyphData.rejected, (state, action) => {
-        // state.glyphData[state.selectedGlyphDataIndex = action.payload;
-      });
   },
 });
 

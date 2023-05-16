@@ -4,13 +4,13 @@ import { GlyphWikiGlyphResponse } from "@/types";
 import { NextResponse } from "next/server";
 
 // TODO: converter of kage to svg
-interface Kage {
+export interface Kage {
   name: string;
   related?: string;
   data: string;
 }
 
-async function getGlyph(glyphName: string) :Promise<Kage>{
+export async function getGlyph(glyphName: string) :Promise<Kage>{
   const res = await fetch(`https://glyphwiki.org/api/glyph?name=${glyphName}`);
   const json=  await res.json() as GlyphWikiGlyphResponse;
   return {
@@ -20,7 +20,7 @@ async function getGlyph(glyphName: string) :Promise<Kage>{
   }
 }
 
-async function getBuhinMap(glyphName: string,  buhinMap:Map<string, string> = new Map()) {
+export async function getBuhinMap(glyphName: string,  buhinMap:Map<string, string> = new Map()) {
   const glyph = await getGlyph(glyphName);
   if (glyph && glyph.data && glyph.name) {
     buhinMap.set(glyph.name, glyph.data);

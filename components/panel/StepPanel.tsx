@@ -26,7 +26,7 @@ function StepPanel() {
             字形データ&nbsp;
             <span
               className="hover:underline hover:cursor-pointer"
-              onClick={callSetGlyphData}
+              onClick={async()=>{await callSetGlyphData()}}
             >
               生成
             </span>{" "}

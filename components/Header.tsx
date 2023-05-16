@@ -30,6 +30,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 function Header() {
   const dispatch = useAppDispatch();
   const textData = useAppSelector((state) => state.general.textData);
+  const testData = useAppSelector((state) => state.general.test);
 
   const handleClearGlyph = () => {
     dispatch(clearGlyphData());
@@ -37,7 +38,6 @@ function Header() {
 
   return (
     <div className="flex flex-col">
-      {/* <h1>glyph-text</h1> */}
       <AlertDialog>
         <Menubar>
           <MenubarMenu>
@@ -58,7 +58,11 @@ function Header() {
           <MenubarMenu>
             <MenubarTrigger>字形</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem onClick={callSetGlyphData}>
+              <MenubarItem
+                onClick={async () => {
+                  await callSetGlyphData();
+                }}
+              >
                 字形データを生成
               </MenubarItem>
               {/* <MenubarSeparator /> */}
