@@ -69,7 +69,7 @@ export async function getBuhinMap(
 ) {
   const glyph = await getGlyph(glyphName);
   if (glyph && glyph.data && glyph.name) {
-    buhinMap.set(glyph.name, glyph.data);
+    buhinMap.set(glyphName, glyph.data);
     const temp = glyph.data.split("$");
     for (const polygon of temp) {
       if (polygon.startsWith("99")) {
@@ -85,6 +85,7 @@ export async function getBuhinMap(
 export async function decompose(glyphName: string) {
   const glyph = (await getGlyph(glyphName)).data;
   const buhinMap = await getBuhinMap(glyphName);
+  console.log(buhinMap)
 
   const parsed: GlyphLine = parseGlyphLine(glyph);
   const decomposed = decomposeDeep(parsed, buhinMap);

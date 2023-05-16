@@ -48,6 +48,5 @@ export async function GET(request: Request) {
 
   const decomposedKageData = decomposed.map(line=> line.value.join(':'))
 
-  console.log(decomposedKageData)
   return NextResponse.json({ decomposedKageData });
 }
