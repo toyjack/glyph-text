@@ -20,6 +20,7 @@ function GlyphDataPanel() {
             <th>漢字符号</th>
             <th>GlyphWkiグリフ名</th>
             <th>字形画像</th>
+            <th>KAGE</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +39,9 @@ function GlyphDataPanel() {
                     height={32}
                     loading="lazy"
                   />
+                </td>
+                <td>
+                  {character.kage_data}
                 </td>
               </tr>
             ))}

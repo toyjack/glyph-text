@@ -14,7 +14,6 @@ export const importTextData = () => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const data = event.target?.result;
-        console.log(data);
         if (typeof data === "string") {
           // const json = JSON.parse(data);
           dispatch(setTextData(data));
@@ -39,7 +38,6 @@ export const importGlyphData = () => {
         const data = event.target?.result;
         if (typeof data === "string") {
           const json = JSON.parse(data);
-          console.log(json);
           dispatch(setGlyphData(json));
         }
       };
@@ -65,7 +63,6 @@ export const exportData = () => {
 export const getGlyphWikiSvgFromGlyphData = (character: string)=>{
   const glyphData = store.getState().general.glyphData;
   const glyph = glyphData.find((glyph) => glyph.character === character);
-  console.log(glyph)
   if (glyph) {
     return glyph.glyphwiki_png;
   }
