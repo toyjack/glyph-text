@@ -10,12 +10,9 @@ import {
 import Link from "next/link";
 import { AppDispatch, RootState } from "@/store";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import {
-  getGlyphWikiNameByCharacter,
-  getUnicodeFromCharacter,
-} from "@/lib/utils";
 import { getGlyphWikiSvgFromGlyphData } from "@/lib/files";
 import { useGetRelatedGlyphsByCodeQuery } from "@/store/glyphfindAPI";
+import { getGlyphWikiNameByCharacter, getUnicodeFromCharacter } from "@/lib/glyphs";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

@@ -29,8 +29,6 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 function Header() {
   const dispatch = useAppDispatch();
-  const textData = useAppSelector((state) => state.general.textData);
-  const testData = useAppSelector((state) => state.general.test);
 
   const handleClearGlyph = () => {
     dispatch(clearGlyphData());

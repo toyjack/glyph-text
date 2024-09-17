@@ -1,8 +1,3 @@
-import {
-  getGlyphWikiPngUrl,
-  getGlyphWikiSvgUrl,
-  getUnicodeFromCharacter,
-} from "@/lib/utils";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -12,6 +7,7 @@ import {
   GlyphWikiGlyphResponse,
   TextData,
 } from "@/types";
+import { getGlyphWikiPngUrl, getGlyphWikiSvgUrl, getUnicodeFromCharacter } from "@/lib/glyphs";
 
 export interface generalState {
   search: string;

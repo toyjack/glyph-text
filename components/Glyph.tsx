@@ -1,4 +1,4 @@
-import { getGlyphWikiNameByCharacter } from '@/lib/utils'
+import { getGlyphWikiNameByCharacter } from '@/lib/glyphs';
 import { Kage, Polygons } from '@kurgm/kage-engine'
 import Image from 'next/image';
 
