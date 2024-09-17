@@ -18,12 +18,12 @@ function StepPanel() {
             className="hover:underline hover:cursor-pointer"
             onClick={importTextData}
           >
-            テキストデータを開く
+            テキストデータを導入
           </button>
         </li>
         <li className={clsx("step", stepState.step2 && "step-neutral")}>
           <div className="flex">
-            字形データ&nbsp;
+            翻字字形データを&nbsp;
             <span
               className="hover:underline hover:cursor-pointer"
               onClick={callSetGlyphData}
