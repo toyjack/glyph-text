@@ -8,9 +8,9 @@ function DisplayPanel() {
   return (
     <Tabs className="w-full" defaultValue="text">
       <TabsList>
-        <TabsTrigger value="text">テキストデータ</TabsTrigger>
-        <TabsTrigger value="preview">プレビュー</TabsTrigger>
-        <TabsTrigger value="glyphData">字形データ</TabsTrigger>
+        <TabsTrigger value="text">Text Data</TabsTrigger>
+        <TabsTrigger value="preview">Preview</TabsTrigger>
+        <TabsTrigger value="glyphData">Glyph Data</TabsTrigger>
       </TabsList>
 
       <TabsContent value="text">

@@ -40,9 +40,9 @@ function PreviewPanel() {
       <GlyphInfoPanel />
 
       <div className="flex flex-col">
-        <h3 className="font-bold p-2 m-1">翻字字形データプレビュー</h3>
+        <h3 className="font-bold p-2 m-1">Preivew</h3>
         <h3>
-          GlyphWiki字形画像で表示：
+          Display with glyph data：
           <label className="swap">
             <input
               type="checkbox"

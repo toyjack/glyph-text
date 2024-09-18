@@ -39,7 +39,7 @@ function Header() {
       <AlertDialog>
         <Menubar>
           <MenubarMenu>
-            <MenubarTrigger>ファイル</MenubarTrigger>
+            <MenubarTrigger>File</MenubarTrigger>
             <MenubarContent>
               <MenubarItem onClick={importTextData}>Open text data</MenubarItem>
               <MenubarItem onClick={importGlyphData}>
@@ -54,24 +54,26 @@ function Header() {
           </MenubarMenu>
 
           <MenubarMenu>
-            <MenubarTrigger>字形</MenubarTrigger>
+            <MenubarTrigger>Glyphs</MenubarTrigger>
             <MenubarContent>
               <MenubarItem
                 onClick={async () => {
                   await callSetGlyphData();
                 }}
               >
-                字形データを生成
+                Generate Glyph Data
               </MenubarItem>
               {/* <MenubarSeparator /> */}
               <AlertDialogTrigger asChild>
-                <MenubarItem>字形データをクリア</MenubarItem>
+                <MenubarItem>
+                  Clear Glyph Data
+                  </MenubarItem>
               </AlertDialogTrigger>
             </MenubarContent>
           </MenubarMenu>
 
           <MenubarMenu>
-            <MenubarTrigger>使い方</MenubarTrigger>
+            <MenubarTrigger>Help</MenubarTrigger>
             <MenubarContent>
               <MenubarItem>Help</MenubarItem>
               <MenubarSeparator />

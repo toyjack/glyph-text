@@ -54,7 +54,7 @@ function GlyphInfoPanel() {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
-        <AccordionTrigger>漢字符号・字形の情報</AccordionTrigger>
+        <AccordionTrigger>Information of Character and Glyph</AccordionTrigger>
         <AccordionContent>
           <div className="flex-1 border-2 border-black m-1 p-2 flex items-center justify-center">
             <div className="basis-1/3  flex flex-col h-full items-center justify-center">
@@ -73,15 +73,14 @@ function GlyphInfoPanel() {
                 />
               </Link>
               <div className="flex flex-col">
-                {/* <p>テキストに出現位置: {selectedTextDataIndex}</p> */}
-                <p>テキストに出現位置: {selectedTextDataIndex}</p>
-                <p>漢字符号: {selectedCharacter}</p>
+                <p>Index in Text: {selectedTextDataIndex}</p>
+                <p>Character: {selectedCharacter}</p>
                 <p>Unicode: {getUnicodeFromCharacter(selectedCharacter)}</p>
               </div>
             </div>
 
             <div className="basis-2/3 flex flex-col m-2 p-4">
-              <h2>関連字形</h2>
+              <h2>Related Glyphs</h2>
               <div className="flex-1 border-2 border-black">
                 <ScrollArea className="h-48">
                   <div className="flex flex-wrap">

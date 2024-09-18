@@ -17,10 +17,10 @@ function GlyphDataPanel() {
           <tr>
             <th></th>
             <th>Unicode</th>
-            <th>漢字符号</th>
-            <th>GlyphWkiグリフ名</th>
-            <th>字形画像</th>
-            <th>KAGE</th>
+            <th>Character</th>
+            <th>GlyphWki Glyph Name</th>
+            <th>Glyph Image</th>
+            <th>KAGE Data</th>
           </tr>
         </thead>
         <tbody>
