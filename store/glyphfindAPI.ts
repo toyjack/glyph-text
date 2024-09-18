@@ -7,7 +7,11 @@ export const glyphfindApi = createApi({
   }),
   endpoints: (builder) => ({
     getRelatedGlyphsByCode: builder.query<{ related_glyphs?:string}, string>({
-      query: (code) => `related?code=${code}`,
+      query: (code) => {
+        // remove first character of code with "u" to get related glyphs
+        code = code.slice(1);
+        return `related?code=${code}`
+      },
     }),
   }),
 });

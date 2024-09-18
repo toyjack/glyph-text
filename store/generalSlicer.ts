@@ -115,7 +115,21 @@ export const generalSlice = createSlice({
     setStepPreview: (state, action: PayloadAction<boolean>) => {
       state.stepState.step3 = action.payload;
     },
-    updateGlyph(state, action: PayloadAction<CharacterGlyphData>) {},
+    updateGlyph(state, action: PayloadAction<string>) {
+      // update selected glyph by index
+      state.glyphData[state.selectedTextDataIndex].glyphwiki_name =
+        action.payload;
+      state.glyphData[state.selectedTextDataIndex].glyphwiki_svg = getGlyphWikiSvgUrl(
+        action.payload
+      );
+      state.glyphData[state.selectedTextDataIndex].glyphwiki_png = getGlyphWikiPngUrl(
+        action.payload
+      );
+
+      // get glyphwiki data
+      // state.glyphData[state.selectedGlyphDataIndex].glyphwiki_data = "";      
+        
+    },
   },
 });
 
@@ -132,6 +146,7 @@ export const {
   clearGlyphData,
   setTextData,
   setStepPreview,
+  updateGlyph,
 } = generalSlice.actions;
 
 export default generalSlice.reducer;

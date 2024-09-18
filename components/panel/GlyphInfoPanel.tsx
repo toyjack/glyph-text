@@ -12,7 +12,11 @@ import { AppDispatch, RootState } from "@/store";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { getGlyphWikiSvgFromGlyphData } from "@/lib/files";
 import { useGetRelatedGlyphsByCodeQuery } from "@/store/glyphfindAPI";
-import { getGlyphWikiNameByCharacter, getUnicodeFromCharacter } from "@/lib/glyphs";
+import {
+  getGlyphWikiNameByCharacter,
+  getUnicodeFromCharacter,
+} from "@/lib/glyphs";
+import { updateGlyph } from "@/store/generalSlicer";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -28,18 +32,25 @@ function GlyphInfoPanel() {
 
   const {
     data: relatedGlyphsData,
-    error,
+    error: loadingRelatedError,
     isLoading: relatedLoading,
   } = useGetRelatedGlyphsByCodeQuery(
     getGlyphWikiNameByCharacter(selectedCharacter)
   );
+
   const hanldeNameInRelated = (name: string) => {
     if (name.includes("=")) {
       return name.split("=")[0].trim();
     }
     return name;
   };
-  const handleClickRelated = (glyphName: string, character: string) => {};
+
+  // handle click related glyph to store in redux
+  const handleClickRelated = (glyphName: string, character: string) => {
+    console.log(glyphName, character);
+    dispatch(updateGlyph(glyphName));
+  };
+
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">

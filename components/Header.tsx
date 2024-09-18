@@ -43,7 +43,7 @@ function Header() {
             <MenubarContent>
               <MenubarItem onClick={importTextData}>Open text data</MenubarItem>
               <MenubarItem onClick={importGlyphData}>
-                テキストデータを導入
+                Open glyph data
               </MenubarItem>
               <MenubarItem onClick={exportData}>Save glyph data</MenubarItem>
               <MenubarSeparator />

@@ -31,7 +31,6 @@ function PreviewPanel() {
   };
 
   const handleGlyphClick = (index: number) => {
-    console.log(index);
     dispatch(setTextDataIndex(index));
     dispatch(setCharacter(textData[index].character));
   };
